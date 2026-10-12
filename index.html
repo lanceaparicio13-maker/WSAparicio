@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .required {
+            color: #dc2626;
+        }
+
+        .form-description {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .field-group {
+            margin-bottom: 16px;
+        }
+    </style>
+
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <main class="container">
+        <section class="form-card">
+            <header class="form-header">
+                <h1>Student Registration</h1>
+                <p class="form-description">
+                    Please complete all required fields.
+                </p>
+            </header>
+
+            <div id="successMessage"
+                class="success-message"
+                role="status"
+                aria-live="polite"
+                hidden>
+                Registration successful! Your information has been validated.
+            </div>
+
+            <form id="registrationForm" novalidate>
+
+                <h2>Personal Information</h2>
+
+                <div class="form-grid">
+                    <div class="field-group">
+                        <label for="studentId">
+                            Student ID <span class="required">*</span>
+                        </label>
+                        <input type="text" id="studentId" name="studentId"
+                            placeholder="e.g. 2026-0001"
+                            data-label="Student ID"
+                            data-required="true"
+                            autocomplete="off">
+                        <small class="error-message" id="studentIdError"></small>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="fullName">
+                            Full Name <span class="required">*</span>
+                        </label>
+                        <input type="text" id="fullName" name="fullName"
+                            placeholder="Enter your full name"
+                            data-label="Full Name"
+                            data-required="true"
+                            autocomplete="name">
+                        <small class="error-message" id="fullNameError"></small>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="email">
+                            Email Address <span class="required">*</span>
+                        </label>
+                        <input type="email" id="email" name="email"
+                            placeholder="you@example.com"
+                            data-label="Email Address"
+                            data-required="true"
+                            autocomplete="email">
+                        <small class="error-message" id="emailError"></small>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="phone">
+                            Phone Number <span class="required">*</span>
+                        </label>
+                        <input type="tel" id="phone" name="phone"
+                            placeholder="09XXXXXXXXX"
+                            maxlength="11"
+                            data-label="Phone Number"
+                            data-required="true"
+                            autocomplete="tel">
+                        <small class="error-message" id="phoneError"></small>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="birthDate">
+                            Date of Birth <span class="required">*</span>
+                        </label>
+                        <input type="date" id="birthDate" name="birthDate"
+                            data-label="Date of Birth"
+                            data-required="true"
+                            autocomplete="bday">
+                        <small class="error-message" id="birthDateError"></small>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="gender">
+                            Gender <span class="required">*</span>
+                        </label>
+                        <select id="gender" name="gender"
+                                data-label="Gender"
+                                data-required="true">
+                            <option value="">Select gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Prefer not to say">Prefer not to say</option>
+                        </select>
+                        <small class="error-message" id="genderError"></small>
+                    </div>
+                </div>
+
+                <h2>Academic Information</h2>
+
+                <div class="form-grid">
+                    <div class="field-group">
+                        <label for="program">
+                            Program <span class="required">*</span>
+                        </label>
+                        <select id="program" name="program"
+                                data-label="Program"
+                                data-required="true">
+                            <option value="">Select program</option>
+                            <option value="BSIT">BS Information Technology (BSIT)</option>
+                            <option value="BSCS">BS Computer Science (BSCS)</option>
+                            <option value="BSIS">BS Information Systems (BSIS)</option>
+                            <option value="BSBA">BS Business Administration (BSBA)</option>
+                            <option value="BSED">Bachelor of Secondary Education (BSED)</option>
+                        </select>
+                        <small class="error-message" id="programError"></small>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="yearLevel">
+                            Year Level <span class="required">*</span>
+                        </label>
+                        <select id="yearLevel" name="yearLevel"
+                                data-label="Year Level"
+                                data-required="true">
+                            <option value="">Select year level</option>
+                            <option value="1st Year">1st Year</option>
+                            <option value="2nd Year">2nd Year</option>
+                            <option value="3rd Year">3rd Year</option>
+                            <option value="4th Year">4th Year</option>
+                            <option value="5th Year">5th Year</option>
+                        </select>
+                        <small class="error-message" id="yearLevelError"></small>
+                    </div>
+                </div>
+
+                <h2>Account Information</h2>
+
+                <div class="form-grid">
+                    <div class="field-group">
+                        <label for="password">
+                            Password <span class="required">*</span>
+                        </label>
+                        <div class="password-wrapper">
+                            <input type="password" id="password" name="password"
+                                placeholder="At least 8 characters"
+                                data-label="Password"
+                                data-required="true"
+                                autocomplete="new-password">
+                            <button type="button" class="toggle-password"
+                                    data-target="password"
+                                    aria-label="Show password"
+                                    aria-pressed="false">
+                                Show
+                            </button>
+                        </div>
+                        <small class="hint">Use at least 8 characters.</small>
+                        <small class="error-message" id="passwordError"></small>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="confirmPassword">
+                            Confirm Password <span class="required">*</span>
+                        </label>
+                        <div class="password-wrapper">
+                            <input type="password" id="confirmPassword"
+                                name="confirmPassword"
+                                placeholder="Re-enter your password"
+                                data-label="Confirm Password"
+                                data-required="true"
+                                autocomplete="new-password">
+                            <button type="button" class="toggle-password"
+                                    data-target="confirmPassword"
+                                    aria-label="Show confirm password"
+                                    aria-pressed="false">
+                                Show
+                            </button>
+                        </div>
+                        <small class="error-message" id="confirmPasswordError"></small>
+                    </div>
+                </div>
+
+                <div class="field-group">
+                    <label for="address">
+                        Address <span class="required">*</span>
+                    </label>
+                    <textarea id="address" name="address" rows="3"
+                            placeholder="House number, street, barangay, municipality, province"
+                            data-label="Address"
+                            data-required="true"
+                            autocomplete="street-address"></textarea>
+                    <small class="error-message" id="addressError"></small>
+                </div>
+
+                <div class="agreement-group">
+                    <input type="checkbox" id="agreement" name="agreement"
+                        data-label="Agreement"
+                        data-required="true">
+                    <label for="agreement">
+                        I confirm that the information I provided is correct.
+                        <span class="required">*</span>
+                    </label>
+                </div>
+                <small class="error-message" id="agreementError"></small>
+
+                <div class="button-group">
+                    <button type="submit" class="btn btn-primary">
+                        Register
+                    </button>
+                    <button type="reset" class="btn btn-secondary" id="resetButton">
+                        Reset Form
+                    </button>
+                </div>
+
+                <p class="footer-note">
+                    Fields marked with <span class="required">*</span> are required.
+                </p>
+            </form>
+        </section>
+    </main>
+
+</body>
+</html>
